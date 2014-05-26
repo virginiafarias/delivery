@@ -35,8 +35,7 @@
 		</div>
 
 		<!-- Button trigger modal -->
-		<button id="btnAdicionar" class="btn btn-primary" data-toggle="modal"
-			data-target="#myModal">Adicionar</button>
+		<button id="btnAdicionar" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Adicionar</button>
 
 		<datatables:table id="produtos" data="${produtos}" cdn="false" row="contato" theme="bootstrap2" cssClass="table table-striped"
 			paginate="true" info="false" export="pdf">
