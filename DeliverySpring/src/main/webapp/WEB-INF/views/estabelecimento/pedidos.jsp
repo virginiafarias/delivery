@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Produtos</title>
+	<title>Pedidos</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<jsp:include page="../fragments/headTag.jsp" />
 	<script type="text/javascript">
@@ -15,7 +15,7 @@
 				.ready(
 						function() {
 							$.fn.dataTableExt.sErrMode = 'throw';
-							$('#produto').dataTable(
+							$('#pedido').dataTable(
 								{
 									"sPaginationType" : "full_numbers",
 									"oLanguage" : {
@@ -55,28 +55,28 @@
 		<a class="buttonAdd" href="<c:url value = "/produto/adicionar.htm"></c:url>">Adicionar</a>
 		
 		<div style="text-align: center;">
-			<label class="control-label" style="font-size: 20px;">Produtos</label>
+			<label class="control-label" style="font-size: 20px;">Pedidos</label>
 		</div>
 
-		<datatables:table id="produto" data="${produtos}" cdn="true" row="produto" theme="bootstrap2" cssClass="table table-striped">
-			<datatables:column title="Nome">
-				<c:out value="${produto.nome}"></c:out>
+		<datatables:table id="produto" data="${pedidos}" cdn="true" row="produto" theme="bootstrap2" cssClass="table table-striped">
+			<datatables:column title="ID">
+				<c:out value="${pedido.id}"></c:out>
 			</datatables:column>
 
-			<datatables:column title="Categoria">
-				<c:out value="${produto.categoria.nome}"></c:out>
+			<datatables:column title="Data">
+				<c:out value="${pedido.data}"></c:out>
 			</datatables:column>
 			
 			<datatables:column title="Preço">
-				<c:out value="${produto.preco}"></c:out>
+				<c:out value="${pedido.status}"></c:out>
 			</datatables:column>
 
 			<datatables:column title="Editar">
-				<a class="buttonAdd" href="<c:url value = "/produto/${produto.id}/${produto.estabelecimento.id}/editar.htm"></c:url>">Editar</a>
+				<a class="buttonAdd" href="<c:url value = "/pedido/${pedido.id}/editar.htm"></c:url>">Editar</a>
 			</datatables:column>
 
 			<datatables:column title="Excluir">
-				<a class="buttonAdd" href="<c:url value = "/produto/${produto.id}/${produto.estabelecimento.id}/excluir.htm"></c:url>">Excluir</a>
+				<a class="buttonAdd" href="<c:url value = "/pedido/${pedido.id}//excluir.htm"></c:url>">Excluir</a>
 			</datatables:column>
 		</datatables:table>
 		

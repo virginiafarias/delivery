@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image: url("/delivery/resources/images/back.jpg");
+}
+
+.container-fluid {
+	background-color: #860606;
+}
+
+ul li a, a.navbar-brand, div.page-header, div#conteudo {
+	color: white !important;
+}
+
+table {
+	background-color: #860606;
+	border: 2px solid white;
+}
+
+tbody {
+	color: black;
+}
+
+select, .dataTables_filter label input {
+	color: black;
+}

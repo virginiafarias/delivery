@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<footer role="contentinfo">
-	<div class="container text-center" style="bottom:0">Todos os direitos reservados.</div>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<footer>
+  <div style="margin-top: 100px; text-align: center;">
+    <p>Todos os direitos reservados</p>
+  </div>
 </footer>
