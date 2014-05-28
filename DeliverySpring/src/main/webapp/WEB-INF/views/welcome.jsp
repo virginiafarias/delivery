@@ -13,7 +13,11 @@
 
 <body>
 	<div class="container">
-		<jsp:include page="fragments/header.jsp" />
+		<div class="page-header">
+		  <a type="button" class="cadastrar btn btn-danger" href="<c:url value="/estabelecimento/cadastrar" />">Adicionar estabelecimento</a>
+		  <a type="button" class="cadastrar btn btn-danger" href="<c:url value="/cliente/cadastrar" />">Cadastrar</a>
+		  <h1>Delivery <small>Sistema de pedidos</small></h1>
+		</div>
 
 		<div id="conteudo" style="text-align: center; margin-top: 50px;">
 

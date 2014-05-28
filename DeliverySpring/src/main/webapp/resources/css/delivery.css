@@ -1,15 +1,23 @@
 @CHARSET "UTF-8";
 
 body {
-	background-image: url("/delivery/resources/images/back.jpg");
+	background-image: url("/delivery/resources/images/back2.jpg");
 }
 
 .container-fluid {
 	background-color: #860606;
 }
 
-ul li a, a.navbar-brand, div.page-header, div#conteudo {
+ul li a, a.navbar-brand {
 	color: white !important;
+}
+
+div.page-header, div#conteudo {
+	color: #860606 !important;
+}
+
+div.page-header {
+	border-bottom: 1px solid #860606;
 }
 
 table {
@@ -23,4 +31,18 @@ tbody {
 
 select, .dataTables_filter label input {
 	color: black;
+}
+
+.cadastrar {
+	float: right;
+	margin-left: 15px;
+}
+
+h3 {
+	text-align: center;
+}
+
+form#cliente, form#estabelecimento {
+	width: 500px;
+	margin: 0 auto;
 }

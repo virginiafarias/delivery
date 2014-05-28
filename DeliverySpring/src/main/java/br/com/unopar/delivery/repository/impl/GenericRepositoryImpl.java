@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unopar.delivery.repository.GenericRepository;
 
-
 public class GenericRepositoryImpl<T> implements GenericRepository<T>{
 
 	@PersistenceContext
@@ -16,8 +15,8 @@ public class GenericRepositoryImpl<T> implements GenericRepository<T>{
 	protected Class<T> persistentClass;
 	
 	@Transactional
-	public void adicionarOuAtualizar(T entity) {
-		this.em.merge(entity);		
+	public T adicionarOuAtualizar(T entity) {
+		return this.em.merge(entity);		
 	}
 
 	@Transactional

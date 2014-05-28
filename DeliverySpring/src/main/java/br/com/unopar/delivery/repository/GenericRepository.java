@@ -3,7 +3,7 @@ package br.com.unopar.delivery.repository;
 
 public interface GenericRepository<T> {
 	
-	public abstract void adicionarOuAtualizar(T entity);
+	public abstract T adicionarOuAtualizar(T entity);
 	
 	public abstract void excluir(T entity);
 	

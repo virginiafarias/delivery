@@ -30,9 +30,6 @@ public class Usuario {
 		
 		@Column(nullable = false)
 		private String password;
-		
-		@Column(nullable = false)
-		private boolean habilitado;
 
 		@ManyToMany
 		@JoinTable(name = "papel_usuario", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "papel_id"))
@@ -68,14 +65,6 @@ public class Usuario {
 
 		public void setSenha(String senha) {
 			this.password = senha;
-		}
-
-		public boolean isHabilitado() {
-			return habilitado;
-		}
-
-		public void setHabilitado(boolean habilitado) {
-			this.habilitado = habilitado;
 		}
 
 }
