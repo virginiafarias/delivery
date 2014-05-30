@@ -52,13 +52,13 @@
 		
 		<jsp:include page="../fragments/header.jsp" />
 		
-		<a class="buttonAdd" href="<c:url value = "/produto/adicionar.htm"></c:url>">Adicionar</a>
+		<a class="buttonAdd" href="<c:url value = "/estabelecimento/adicionarProduto.htm"></c:url>">Adicionar</a>
 		
 		<div style="text-align: center;">
 			<label class="control-label" style="font-size: 20px;">Produtos</label>
 		</div>
 
-		<datatables:table id="produto" data="${produtos}" cdn="true" row="produto" theme="bootstrap2" cssClass="table table-striped">
+		<datatables:table id="produto" data="${estabelecimento.produtos}" cdn="true" row="produto" theme="bootstrap2" cssClass="table table-striped">
 			<datatables:column title="Nome">
 				<c:out value="${produto.nome}"></c:out>
 			</datatables:column>

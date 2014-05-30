@@ -1,17 +1,18 @@
 package br.com.unopar.delivery.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.unopar.delivery.util.Role;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames = {"id", "login"}))
@@ -25,23 +26,16 @@ public class Usuario {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer id;
 		
+		@NotEmpty(message = "Campo obrigatório")
 		@Column(nullable = false)
 		private String login;
 		
+		@NotEmpty(message = "Campo obrigatório")
 		@Column(nullable = false)
-		private String password;
-
-		@ManyToMany
-		@JoinTable(name = "papel_usuario", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "papel_id"))
-		private List<Papel> papeis;
+		private String senha;
 		
-		public List<Papel> getPapeis() {
-			return papeis;
-		}
-
-		public void setPapeis(List<Papel> papeis) {
-			this.papeis = papeis;
-		}
+		@Enumerated(EnumType.STRING)
+		private Role role;
 
 		public Integer getId() {
 			return id;
@@ -60,11 +54,19 @@ public class Usuario {
 		}
 
 		public String getSenha() {
-			return password;
+			return senha;
 		}
 
 		public void setSenha(String senha) {
-			this.password = senha;
+			this.senha = senha;
+		}
+
+		public Role getRole() {
+			return role;
+		}
+
+		public void setRole(Role role) {
+			this.role = role;
 		}
 
 }

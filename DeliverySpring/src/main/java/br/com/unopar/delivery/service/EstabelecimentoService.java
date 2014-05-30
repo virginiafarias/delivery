@@ -4,6 +4,8 @@ import br.com.unopar.delivery.model.Estabelecimento;
 
 public interface EstabelecimentoService {
 	
-	public abstract void cadastrar(Estabelecimento estabelecimento);
+	public abstract Estabelecimento cadastrar(Estabelecimento estabelecimento);
+	
+	public abstract Estabelecimento getByUsuarioId(Integer id);
 
 }

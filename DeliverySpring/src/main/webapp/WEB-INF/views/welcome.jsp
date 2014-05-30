@@ -22,8 +22,14 @@
 		<div id="conteudo" style="text-align: center; margin-top: 50px;">
 
 			<div id="login" style="width: 300px; margin: 0 auto;">
+				<c:if test="${not empty error}">
+					<div class="alert alert-danger alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<c:out value="${error }"></c:out>
+					</div>
+				</c:if>
 
-				<form action="" id="login-form" method="POST">
+				<form action="/delivery/login" id="login-form" method="POST" >
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Login:</label> <input
 							type="text" name="login" class="form-control" />
@@ -34,7 +40,7 @@
 							type="password" name="senha" class="form-control" />
 					</div>
 
-					<button type="button" class="btn btn-info">Entrar</button>
+					<input type="submit" class="btn btn-info" value="Entrar"/>
 
 				</form>
 			</div>

@@ -1,11 +1,13 @@
 package br.com.unopar.delivery.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -28,6 +30,17 @@ public class Cliente implements Serializable {
 	
 	@OneToOne
 	private Usuario usuario;
+	
+	@OneToMany
+	private List<Pedido> pedidos;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	public Integer getId() {
 		return id;

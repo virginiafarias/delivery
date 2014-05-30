@@ -8,6 +8,7 @@ import br.com.unopar.delivery.repository.ClienteRepository;
 import br.com.unopar.delivery.repository.EnderecoRepository;
 import br.com.unopar.delivery.repository.UsuarioRespository;
 import br.com.unopar.delivery.service.ClienteService;
+import br.com.unopar.delivery.util.Role;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -21,11 +22,12 @@ public class ClienteServiceImpl implements ClienteService {
 	@Autowired UsuarioRespository usuarioRespository;
 
 	@Override
-	public void cadastrar(Cliente cliente) {
+	public Cliente cadastrar(Cliente cliente) {
+		cliente.getUsuario().setRole(Role.CLIENTE);
 		cliente.setEndereco(enderecoRepository.adicionarOuAtualizar(cliente.getEndereco()));
 		cliente.setUsuario(usuarioRespository.adicionarOuAtualizar(cliente.getUsuario()));
 		
-		clienteRepository.adicionarOuAtualizar(cliente);
+		return clienteRepository.adicionarOuAtualizar(cliente);
 		
 	}
 

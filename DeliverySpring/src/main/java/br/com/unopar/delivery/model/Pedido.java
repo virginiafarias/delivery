@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import br.com.unopar.delivery.util.Status;
 
@@ -28,10 +28,10 @@ public class Pedido implements Serializable {
 	
 	private String anotacoes;
 	
-	@OneToOne
+	@ManyToOne
 	private Estabelecimento estabelecimento;
 	
-	@OneToOne
+	@ManyToOne
 	private Cliente cliente;
 	
 	@OneToMany

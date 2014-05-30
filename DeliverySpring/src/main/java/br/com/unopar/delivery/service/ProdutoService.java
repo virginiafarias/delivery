@@ -7,5 +7,7 @@ import br.com.unopar.delivery.model.Produto;
 public interface ProdutoService {
 	
 	public abstract List<Produto> listar();
+	
+	public abstract Produto cadastrar(Produto produto);
 
 }

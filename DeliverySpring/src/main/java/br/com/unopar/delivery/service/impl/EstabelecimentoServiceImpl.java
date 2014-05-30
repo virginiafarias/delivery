@@ -8,6 +8,7 @@ import br.com.unopar.delivery.repository.EnderecoRepository;
 import br.com.unopar.delivery.repository.EstabelecimentoRepository;
 import br.com.unopar.delivery.repository.UsuarioRespository;
 import br.com.unopar.delivery.service.EstabelecimentoService;
+import br.com.unopar.delivery.util.Role;
 
 @Service
 public class EstabelecimentoServiceImpl implements EstabelecimentoService {
@@ -22,11 +23,17 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
 	private UsuarioRespository usuarioRespository;
 	
 	@Override
-	public void cadastrar(Estabelecimento estabelecimento) {
+	public Estabelecimento cadastrar(Estabelecimento estabelecimento) {
+		estabelecimento.getUsuario().setRole(Role.ESTABELECIMENTO);
 		estabelecimento.setEndereco(enderecoRepository.adicionarOuAtualizar(estabelecimento.getEndereco()));
 		estabelecimento.setUsuario(usuarioRespository.adicionarOuAtualizar(estabelecimento.getUsuario()));
-		estabelecimentoRespository.adicionarOuAtualizar(estabelecimento);
+		return estabelecimentoRespository.adicionarOuAtualizar(estabelecimento);
 		
+	}
+
+	@Override
+	public Estabelecimento getByUsuarioId(Integer id) {
+		return estabelecimentoRespository.getByUsuarioId(id);
 	}
 
 }

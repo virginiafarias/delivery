@@ -4,6 +4,6 @@ import br.com.unopar.delivery.model.Cliente;
 
 public interface ClienteService {
 	
-	public abstract void cadastrar(Cliente cliente);
+	public abstract Cliente cadastrar(Cliente cliente);
 
 }

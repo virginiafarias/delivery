@@ -28,6 +28,7 @@
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.3.1.Final</hibernate.version>
+		<hibernate.validation.version>5.1.0.Final</hibernate.validation.version>
 
 		<!-- Database access -->
 		<postgresql.version>9.1-901.jdbc4</postgresql.version>
@@ -135,6 +136,11 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validation.version}</version>
 		</dependency>
 
 		<!-- Databases - Uses MYSQL by default -->

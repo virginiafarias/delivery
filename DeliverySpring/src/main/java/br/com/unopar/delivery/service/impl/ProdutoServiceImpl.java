@@ -20,4 +20,9 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return produtoRepository.listar();
 	}
 
+	@Override
+	public Produto cadastrar(Produto produto) {
+		return produtoRepository.adicionarOuAtualizar(produto);
+	}
+
 }

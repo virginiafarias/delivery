@@ -15,7 +15,7 @@
 				.ready(
 						function() {
 							$.fn.dataTableExt.sErrMode = 'throw';
-							$('#pedido').dataTable(
+							$('#pedidos').dataTable(
 								{
 									"sPaginationType" : "full_numbers",
 									"oLanguage" : {
@@ -52,13 +52,11 @@
 		
 		<jsp:include page="../fragments/header.jsp" />
 		
-		<a class="buttonAdd" href="<c:url value = "/produto/adicionar.htm"></c:url>">Adicionar</a>
-		
 		<div style="text-align: center;">
 			<label class="control-label" style="font-size: 20px;">Pedidos</label>
 		</div>
 
-		<datatables:table id="produto" data="${pedidos}" cdn="true" row="produto" theme="bootstrap2" cssClass="table table-striped">
+		<datatables:table id="pedidos" data="${estabelecimento.pedidos}" cdn="true" row="pedido" theme="bootstrap2" cssClass="table table-striped">
 			<datatables:column title="ID">
 				<c:out value="${pedido.id}"></c:out>
 			</datatables:column>
