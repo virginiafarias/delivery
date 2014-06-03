@@ -18,7 +18,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    	<ul class="nav navbar-nav">
 		        <li><a href="#">Pedidos</a></li>
-		        <li><a href="<c:url value = "/produto/listar.htm"></c:url>">Produtos</a></li>
+		        <li><a href="<c:url value = "/estabelecimento/produtos"></c:url>">Produtos</a></li>
 		      </ul>
 	    </div>
 	</div>

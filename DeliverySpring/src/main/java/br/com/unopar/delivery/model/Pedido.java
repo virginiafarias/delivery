@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,8 +35,8 @@ public class Pedido implements Serializable {
 	@ManyToOne
 	private Cliente cliente;
 	
-	@OneToMany
-	private List<Produto> produtos;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedido")
+	private List<PedidoProduto> pp;
 	
 	private Status status;
 	
@@ -75,17 +76,17 @@ public class Pedido implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
 	public Status getStatus() {
 		return status;
 	}
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	public List<PedidoProduto> getPp() {
+		return pp;
+	}
+	public void setPp(List<PedidoProduto> pp) {
+		this.pp = pp;
 	}
 	
 	

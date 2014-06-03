@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cliente</title>
+<title>Cadastro Estabelecimento</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../fragments/headTag.jsp" />
 </head>
@@ -39,18 +39,21 @@
 		    <label for="nome" class="col-sm-2 control-label">Razão Social</label>
 		    <div class="col-sm-10">
 		      <form:input type="text" class="form-control" id="nome" placeholder="Nome" path="nome"/>
+		      <form:errors path="nome"></form:errors>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="email" class="col-sm-2 control-label">Email</label>
 		    <div class="col-sm-10">
 		      <form:input type="text" class="form-control" id="email" placeholder="Email" path="email"/>
+		      <form:errors path="email"></form:errors>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="telefone" class="col-sm-2 control-label">Telefone</label>
 		    <div class="col-sm-10">
 		      <form:input type="text" class="form-control" id="telefone" placeholder="Telefone" path="telefone"/>
+		      <form:errors path="telefone"></form:errors>
 		    </div>
 		  </div>
 		  
@@ -67,6 +70,7 @@
 		      <form:input type="password" class="form-control" id="senha" placeholder="Senha" path="usuario.senha"/>
 		    </div>
 		  </div>
+		  <form:errors path="usuario"></form:errors>
 		  
 		  <h3>Endereço</h3>
 		  <div class="form-group">
@@ -99,6 +103,7 @@
 		      <form:input type="text" class="form-control" id="estado" placeholder="Estado" path="endereco.estado"/>
 		    </div>
 		  </div>
+		  <form:errors path="endereco"></form:errors>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-info">Cadastrar</button>

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.unopar.delivery.model.Cliente;
 import br.com.unopar.delivery.model.Estabelecimento;
 import br.com.unopar.delivery.model.Usuario;
+import br.com.unopar.delivery.service.ClienteService;
 import br.com.unopar.delivery.service.EstabelecimentoService;
 import br.com.unopar.delivery.service.UsuarioService;
 import br.com.unopar.delivery.util.Role;
@@ -25,6 +27,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private EstabelecimentoService estabelecimentoService;
+	
+	@Autowired
+	private ClienteService clienteService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam("login") String login, @RequestParam("senha") String senha, HttpSession session, ModelMap map) {
@@ -40,13 +45,17 @@ public class UsuarioController {
 		
 		Usuario usuario = usuarios.get(0);
 		if (usuario.getRole().equals(Role.CLIENTE)) {
-			// Cliente: mostra a tela de busca
+			Cliente cliente = clienteService.getByUsuarioId(usuario.getId());
+			session.setAttribute("usuario", cliente);
+			List<Estabelecimento> estabelecimentos = estabelecimentoService.getAll();
+			map.addAttribute("estabelecimentos", estabelecimentos);
+			// Buscar todos os estabelecimentos
 			return "cliente/busca";
 			
 		} else {
 			Estabelecimento estabelecimento = estabelecimentoService.getByUsuarioId(usuario.getId());
-			map.addAttribute("estabelecimento", estabelecimento);
-			return "estabelecimento/pedidos";
+			session.setAttribute("usuario", estabelecimento);
+			return "redirect:/estabelecimento/pedidos";
 		}
 		
 	}

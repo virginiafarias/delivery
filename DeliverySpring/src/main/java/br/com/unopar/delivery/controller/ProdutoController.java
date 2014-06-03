@@ -15,12 +15,5 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoService produtoService;
 	
-	@RequestMapping(value = "/listar.htm", method = RequestMethod.GET)
-	public String listar(ModelMap modelMap) {
-		
-		modelMap.addAttribute("produtos", this.produtoService.listar());
-		return "estabelecimento/produtos";
-		
-	}
 
 }

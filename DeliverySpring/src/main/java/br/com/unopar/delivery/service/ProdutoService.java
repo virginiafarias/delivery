@@ -10,4 +10,6 @@ public interface ProdutoService {
 	
 	public abstract Produto cadastrar(Produto produto);
 
+	public abstract Produto getById(Integer id);
+
 }

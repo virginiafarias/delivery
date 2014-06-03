@@ -31,4 +31,14 @@ public class ClienteServiceImpl implements ClienteService {
 		
 	}
 
+	@Override
+	public Cliente getByUsuarioId(Integer id) {
+		return clienteRepository.getByUsuarioId(id);
+	}
+
+	@Override
+	public Cliente getById(Integer id) {
+		return clienteRepository.getById(id);
+	}
+
 }

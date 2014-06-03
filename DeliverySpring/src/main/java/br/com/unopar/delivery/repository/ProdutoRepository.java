@@ -9,4 +9,6 @@ public interface ProdutoRepository extends GenericRepository<Produto> {
 	
 	public List<Produto> listar();
 
+	public Produto getById(Integer id);
+
 }

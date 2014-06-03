@@ -1,5 +1,7 @@
 package br.com.unopar.delivery.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -38,13 +40,19 @@ public class EstabelecimentoController {
 		}
 		Estabelecimento est = estabelecimentoService.cadastrar(estabelecimento);
 		session.setAttribute("usuario", est);
-		return "redirect:/estabelecimento/pedidos";
+		return "redirect:/estabelecimento/produtos";
 	}
 	
 	@RequestMapping(value="/pedidos", method=RequestMethod.GET)
 	public String pedidos(ModelMap modelMap, HttpSession session) {
 		modelMap.addAttribute("estabelecimento", session.getAttribute("usuario"));
 		return "estabelecimento/pedidos";
+	}
+	
+	@RequestMapping(value="/produtos", method=RequestMethod.GET)
+	public String produtos(ModelMap modelMap, HttpSession session) {
+		modelMap.addAttribute("estabelecimento", session.getAttribute("usuario"));
+		return "estabelecimento/produtos";
 	}
 	
 	@RequestMapping(value="/adicionarProduto", method=RequestMethod.GET)
@@ -61,10 +69,14 @@ public class EstabelecimentoController {
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("usuario");
 		produto.setEstabelecimento(estabelecimento);
 		produto = produtoService.cadastrar(produto);
+		if (estabelecimento.getProdutos() == null) {
+			estabelecimento.setProdutos(new ArrayList<Produto>());
+		}
+		estabelecimento.getProdutos().add(produto);
+		estabelecimento = estabelecimentoService.cadastrar(estabelecimento);
 		session.removeAttribute("usuario");
 		session.setAttribute("usuario", estabelecimento);
-		modelMap.addAttribute("produto", new Produto());
-		return "estabelecimento/produtos";
+		return "redirect:/estabelecimento/produtos";
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.unopar.delivery.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,16 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
 	@Override
 	public Estabelecimento getByUsuarioId(Integer id) {
 		return estabelecimentoRespository.getByUsuarioId(id);
+	}
+
+	@Override
+	public List<Estabelecimento> getAll() {
+		return estabelecimentoRespository.getAll();
+	}
+
+	@Override
+	public Estabelecimento getById(Integer id) {
+		return estabelecimentoRespository.getById(id);
 	}
 
 }

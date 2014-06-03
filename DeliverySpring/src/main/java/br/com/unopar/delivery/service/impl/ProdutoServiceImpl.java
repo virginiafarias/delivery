@@ -25,4 +25,9 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return produtoRepository.adicionarOuAtualizar(produto);
 	}
 
+	@Override
+	public Produto getById(Integer id) {
+		return produtoRepository.getById(id);
+	}
+
 }

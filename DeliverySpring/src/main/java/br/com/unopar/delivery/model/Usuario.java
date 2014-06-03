@@ -1,5 +1,7 @@
 package br.com.unopar.delivery.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,7 +18,9 @@ import br.com.unopar.delivery.util.Role;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames = {"id", "login"}))
-public class Usuario {
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 		public Usuario() {
 			super();

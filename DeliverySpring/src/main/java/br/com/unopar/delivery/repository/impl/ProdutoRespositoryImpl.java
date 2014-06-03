@@ -17,7 +17,16 @@ public class ProdutoRespositoryImpl extends GenericRepositoryImpl<Produto> imple
 	
 	@SuppressWarnings("unchecked")
 	public List<Produto> listar() {
-		return em.createQuery("select c from Produto c order by c.id").getResultList();
+		return em.createQuery("select p from Produto p order by p.id").getResultList();
+	}
+
+	@Override
+	public Produto getById(Integer id) {
+		List<Produto> result = em.createQuery("select p from Produto p where p.id = :id", Produto.class).setParameter("id", id).getResultList();
+		if (result != null && !result.isEmpty()) {
+			return result.get(0);
+		}
+		return null;
 	}
 
 }

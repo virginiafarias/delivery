@@ -6,7 +6,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<html lang="en">
+<html>
+
+<title>Delivery</title>
 
 <jsp:include page="fragments/headTag.jsp" />
 <link href="<c:url value="/resources/css/npi.css" />" rel="stylesheet" />

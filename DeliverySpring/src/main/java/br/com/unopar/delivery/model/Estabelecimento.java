@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Estabelecimento implements Serializable {
@@ -19,20 +23,37 @@ public class Estabelecimento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotEmpty(message = "Campo obrigatório")
 	private String nome;
 	
+	@NotEmpty(message = "Campo obrigatório")
 	private String telefone;
 	
+	@NotEmpty(message = "Campo obrigatório")
 	private String email;
 	
+	@NotNull(message = "Preencha os dados do endereço")
 	@OneToOne
 	private Endereco endereco;
 	
+	@NotNull(message = "Preencha os dados do usuário")
 	@OneToOne
 	private Usuario usuario;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Pedido> pedidos;
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Produto> produtos;
+	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
 
 	public Usuario getUsuario() {
 		return usuario;
