@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -25,13 +26,13 @@
 										"sInfoFiltered" : "(Filtrar de _MAX_ total registros)",
 										"sInfoPostFix" : "",
 										"sInfoThousands" : ".",
-										"sLengthMenu" : "Mostrar _MENU_ registros por pagina",
+										"sLengthMenu" : "Mostrar _MENU_ registros por página",
 										"sLoadingRecords" : "Carregando...",
 										"sProcessing" : "Processando...",
 										"sZeroRecords" : "Nenhum registro encontrado",
 										"sSearch" : "Pesquisar",
 										"oPaginate" : {
-											"sNext" : "Proximo",
+											"sNext" : "Próximo",
 											"sPrevious" : "Anterior",
 											"sFirst" : "Primeiro",
 											"sLast" : "Ultimo"
@@ -43,11 +44,13 @@
 									}
 								}
 							);
+							$.format.date($('#').val(), "dd~MM~yyyy");
 	
 						});
 	</script>
 </head>
 <body>
+	<fmt:setLocale value="pt_BR"/>
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
 		
 		<jsp:include page="../fragments/header.jsp" />
@@ -57,16 +60,16 @@
 		</div>
 
 		<datatables:table id="pedidos" data="${cliente.pedidos}" cdn="true" row="pedido" theme="bootstrap2" cssClass="table table-striped">
-			<datatables:column title="ID">
+			<datatables:column title="Número">
 				<c:out value="${pedido.id}"></c:out>
 			</datatables:column>
 
-			<datatables:column title="Data">
-				<c:out value="${pedido.data}"></c:out>
+			<datatables:column title="Data" cssClass="date">
+				<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${pedido.data}" />
 			</datatables:column>
 			
 			<datatables:column title="Preço">
-				<c:out value="${pedido.status}"></c:out>
+				<fmt:formatNumber value="${pedido.valor}" type="currency"/>
 			</datatables:column>
 
 			<datatables:column title="Editar">

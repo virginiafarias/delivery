@@ -14,9 +14,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../fragments/headTag.jsp" />
 <script type="text/javascript">
-$(document) .ready( function() {
-	$('#preco').currency();
-});
+	$(document) .ready( function() {
+		$('#preco').mask("11/11/1111");
+	});
 </script>
 </head>
 <body>
@@ -51,7 +51,7 @@ $(document) .ready( function() {
 		  <div class="form-group">
 		    <label for="preco" class="col-sm-2 control-label">Preço</label>
 		    <div class="col-sm-10">
-		      <form:input type="currency" class="form-control" id="preco" placeholder="Preço" path="preco" />
+		      <form:input type="text" class="form-control" id="preco" placeholder="Preço" path="preco" />
 		      <form:errors path="preco"></form:errors>
 		    </div>
 		  </div>

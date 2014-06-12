@@ -33,9 +33,9 @@
 		</nav>
 
 		<form id="busca" class="form-horizontal" action="/delivery/cliente/buscarEstabelecimento" method="get">
-			<div class="form-group">
+			<div class="form-group" style="margin-left: 300px; width: 500px;">
 				<div class="col-sm-10">
-					<select class="form-group" name="estabelecimento">
+					<select class="form-control" name="estabelecimento">
 						<c:forEach items="${estabelecimentos}" var="estabelecimento">
 							<option value="${estabelecimento.id }">${estabelecimento.nome} </option>
 						</c:forEach>
@@ -43,7 +43,7 @@
 				</div>
 			</div>
 		  
-		  <div class="form-group">
+		  <div class="form-group" style="margin-left: 360px;">
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-info">Buscar</button>
 		    </div>

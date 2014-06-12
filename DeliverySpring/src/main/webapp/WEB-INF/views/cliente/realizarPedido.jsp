@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -25,16 +26,16 @@
 										"sInfoFiltered" : "(Filtrar de _MAX_ total registros)",
 										"sInfoPostFix" : "",
 										"sInfoThousands" : ".",
-										"sLengthMenu" : "Mostrar _MENU_ registros por pagina",
+										"sLengthMenu" : "Mostrar _MENU_ registros por página",
 										"sLoadingRecords" : "Carregando...",
 										"sProcessing" : "Processando...",
 										"sZeroRecords" : "Nenhum registro encontrado",
 										"sSearch" : "Pesquisar",
 										"oPaginate" : {
-											"sNext" : "Proximo",
+											"sNext" : "Próximo",
 											"sPrevious" : "Anterior",
 											"sFirst" : "Primeiro",
-											"sLast" : "Ultimo"
+											"sLast" : "Último"
 										},
 										"oAria" : {
 											"sSortAscending" : ": Ordenar colunas de forma ascendente",
@@ -53,16 +54,16 @@
 											"sInfoFiltered" : "(Filtrar de _MAX_ total registros)",
 											"sInfoPostFix" : "",
 											"sInfoThousands" : ".",
-											"sLengthMenu" : "Mostrar _MENU_ registros por pagina",
+											"sLengthMenu" : "Mostrar _MENU_ registros por página",
 											"sLoadingRecords" : "Carregando...",
 											"sProcessing" : "Processando...",
 											"sZeroRecords" : "Nenhum registro encontrado",
 											"sSearch" : "Pesquisar",
 											"oPaginate" : {
-												"sNext" : "Proximo",
+												"sNext" : "Próximo",
 												"sPrevious" : "Anterior",
 												"sFirst" : "Primeiro",
-												"sLast" : "Ultimo"
+												"sLast" : "Último"
 											},
 											"oAria" : {
 												"sSortAscending" : ": Ordenar colunas de forma ascendente",
@@ -80,6 +81,7 @@
 	</script>
 </head>
 <body>
+	<fmt:setLocale value="pt_BR"/>
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
 		
 		<jsp:include page="../fragments/header.jsp" />
@@ -148,7 +150,7 @@
 		</datatables:table>
 		
 		<div style="margin-top: 60px; text-align: right;">
-			<label style="font-size: 20px;">Total: <c:out value="${total}"></c:out></label>
+			<label style="font-size: 20px;">Total: <fmt:formatNumber value="${total}" type="currency"/></label>
 		</div>
 		
 		<div style="text-align: right;">
