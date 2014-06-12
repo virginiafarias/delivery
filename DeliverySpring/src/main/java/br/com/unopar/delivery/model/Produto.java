@@ -39,7 +39,7 @@ public class Produto implements Serializable {
 	@ManyToOne
 	private Estabelecimento estabelecimento;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "produto")
 	private List<PedidoProduto> pp;
 
 	public Integer getId() {

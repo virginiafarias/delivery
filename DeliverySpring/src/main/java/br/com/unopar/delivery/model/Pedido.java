@@ -35,7 +35,7 @@ public class Pedido implements Serializable {
 	@ManyToOne
 	private Cliente cliente;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedido")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "pedido")
 	private List<PedidoProduto> pp;
 	
 	private Status status;

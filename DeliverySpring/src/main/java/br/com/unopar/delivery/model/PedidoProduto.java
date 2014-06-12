@@ -22,12 +22,12 @@ public class PedidoProduto implements Serializable {
 	"idProduto", column = @Column(name = "idProduto", nullable = false)) })
 	private PedidoProdutoPK id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPedido", nullable = false, insertable = false,
 	updatable = false)
 	private Pedido pedido;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idProduto", nullable = false, insertable = false,
 	updatable = false)
 	private Produto produto;

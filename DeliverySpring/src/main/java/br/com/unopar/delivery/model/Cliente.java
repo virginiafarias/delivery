@@ -32,7 +32,7 @@ public class Cliente implements Serializable {
 	@OneToOne
 	private Usuario usuario;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
 	private List<Pedido> pedidos;
 
 	public List<Pedido> getPedidos() {

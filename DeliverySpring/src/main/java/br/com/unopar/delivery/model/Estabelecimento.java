@@ -40,10 +40,10 @@ public class Estabelecimento implements Serializable {
 	@OneToOne
 	private Usuario usuario;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estabelecimento")
 	private List<Pedido> pedidos;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "estabelecimento")
 	private List<Produto> produtos;
 	
 	public List<Produto> getProdutos() {
