@@ -21,26 +21,20 @@
 </head>
 <body>
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
-		<div class="page-header">
-		  <h1>Delivery <small>Sistema de pedidos</small></h1>
-		</div>
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			      <a class="navbar-brand" href="<c:url value='/'/>">Home</a>
-			    </div>
-			</div>
-		</nav>
+		
+		<jsp:include page="../fragments/headerEstabelecimento.jsp" />
 
 		<form:form id="produto" class="form-horizontal" role="form" action="/delivery/estabelecimento/adicionarProduto" method="post" modelAttribute="produto">
 		  
-		  <h3>Adicionar produto</h3>
+		  <form:input type="hidden" class="form-control" id="id" path="id"/>	
+		  
+		  <c:set var="action" value="Atualizar"/>
+		  
+		  <c:if test="${produto.id == null}">
+		  	<c:set var="action" value="Adicionar"/>
+		  </c:if>
+		  
+		  <h3>${action } produto</h3>
 		  <div class="form-group">
 		    <label for="nome" class="col-sm-2 control-label">Nome</label>
 		    <div class="col-sm-10">
@@ -72,7 +66,7 @@
 		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-info">Adicionar</button>
+		      <button type="submit" class="btn btn-info">${action }</button>
 		    </div>
 		  </div>
 		</form:form>

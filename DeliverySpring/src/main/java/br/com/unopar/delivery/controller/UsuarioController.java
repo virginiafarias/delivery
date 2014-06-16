@@ -49,8 +49,7 @@ public class UsuarioController {
 			session.setAttribute("usuario", cliente);
 			List<Estabelecimento> estabelecimentos = estabelecimentoService.getAll();
 			map.addAttribute("estabelecimentos", estabelecimentos);
-			// Buscar todos os estabelecimentos
-			return "cliente/busca";
+			return "cliente/pedidos";
 			
 		} else {
 			Estabelecimento estabelecimento = estabelecimentoService.getByUsuarioId(usuario.getId());
@@ -58,6 +57,12 @@ public class UsuarioController {
 			return "redirect:/estabelecimento/pedidos";
 		}
 		
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "welcome";
 	}
 	
 	

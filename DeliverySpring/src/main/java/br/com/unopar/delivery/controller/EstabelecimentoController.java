@@ -9,13 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.unopar.delivery.model.Estabelecimento;
+import br.com.unopar.delivery.model.Pedido;
 import br.com.unopar.delivery.model.Produto;
 import br.com.unopar.delivery.service.EstabelecimentoService;
+import br.com.unopar.delivery.service.PedidoService;
 import br.com.unopar.delivery.service.ProdutoService;
+import br.com.unopar.delivery.util.Status;
 
 @Controller
 @RequestMapping("estabelecimento")
@@ -26,6 +30,9 @@ public class EstabelecimentoController {
 	
 	@Autowired
 	private ProdutoService produtoService;
+	
+	@Autowired
+	private PedidoService pedidoService;
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
 	public String cadastro(ModelMap modelMap) {
@@ -45,13 +52,17 @@ public class EstabelecimentoController {
 	
 	@RequestMapping(value="/pedidos", method=RequestMethod.GET)
 	public String pedidos(ModelMap modelMap, HttpSession session) {
-		modelMap.addAttribute("estabelecimento", session.getAttribute("usuario"));
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("usuario");
+		estabelecimento = estabelecimentoService.getById(estabelecimento.getId());
+		modelMap.addAttribute("estabelecimento", estabelecimento);
 		return "estabelecimento/pedidos";
 	}
 	
 	@RequestMapping(value="/produtos", method=RequestMethod.GET)
 	public String produtos(ModelMap modelMap, HttpSession session) {
-		modelMap.addAttribute("estabelecimento", session.getAttribute("usuario"));
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("usuario");
+		estabelecimento = estabelecimentoService.getById(estabelecimento.getId());
+		modelMap.addAttribute("estabelecimento", estabelecimento);
 		return "estabelecimento/produtos";
 	}
 	
@@ -77,6 +88,31 @@ public class EstabelecimentoController {
 		session.removeAttribute("usuario");
 		session.setAttribute("usuario", estabelecimento);
 		return "redirect:/estabelecimento/produtos";
+	}
+	
+	@RequestMapping(value="/detalhePedido/{id}", method=RequestMethod.GET)
+	public String detalhePedido(@PathVariable("id") Integer id, ModelMap modelMap, HttpSession session) {
+		Pedido pedido = pedidoService.getById(id);
+		modelMap.addAttribute("pedido", pedido);
+		return "estabelecimento/detalhePedido";
+	}
+	
+	@RequestMapping(value="/atenderPedido/{id}", method=RequestMethod.GET)
+	public String atenderPedido(@PathVariable("id") Integer id, ModelMap modelMap, HttpSession session) {
+		Pedido pedido = pedidoService.getById(id);
+		pedido.setStatus(Status.ATENDIDO);
+		pedido = pedidoService.cadastrar(pedido);
+		modelMap.addAttribute("pedido", pedido);
+		return "estabelecimento/detalhePedido";
+	}
+	
+	@RequestMapping(value="/finalizarPedido/{id}", method=RequestMethod.GET)
+	public String finalizarPedido(@PathVariable("id") Integer id, ModelMap modelMap, HttpSession session) {
+		Pedido pedido = pedidoService.getById(id);
+		pedido.setStatus(Status.FINALIZADO);
+		pedido = pedidoService.cadastrar(pedido);
+		modelMap.addAttribute("pedido", pedido);
+		return "estabelecimento/detalhePedido";
 	}
 
 }

@@ -14,27 +14,15 @@
 <jsp:include page="../fragments/headTag.jsp" />
 </head>
 <body>
+	
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
-		<div class="page-header">
-		  <h1>Delivery <small>Sistema de pedidos</small></h1>
-		</div>
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			      <a class="navbar-brand" href="<c:url value='/'/>">Home</a>
-			    </div>
-			</div>
-		</nav>
-
+	
+		<jsp:include page="../fragments/headerCliente.jsp" />
+		
 		<form id="busca" class="form-horizontal" action="/delivery/cliente/buscarEstabelecimento" method="get">
 			<div class="form-group" style="margin-left: 300px; width: 500px;">
 				<div class="col-sm-10">
+					<label>Estabelecimentos: </label>
 					<select class="form-control" name="estabelecimento">
 						<c:forEach items="${estabelecimentos}" var="estabelecimento">
 							<option value="${estabelecimento.id }">${estabelecimento.nome} </option>

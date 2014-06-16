@@ -30,4 +30,10 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return produtoRepository.getById(id);
 	}
 
+	@Override
+	public void excluir(Integer id) {
+		produtoRepository.excluir(produtoRepository.getById(id));
+		
+	}
+
 }

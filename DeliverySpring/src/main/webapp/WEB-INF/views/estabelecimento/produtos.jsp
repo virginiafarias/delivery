@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,7 @@
 <body>
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
 		
-		<jsp:include page="../fragments/header.jsp" />
+		<jsp:include page="../fragments/headerEstabelecimento.jsp" />
 		
 		<a class="btn btn-primary" href="<c:url value = "/estabelecimento/adicionarProduto"></c:url>">Adicionar</a>
 		
@@ -69,15 +70,15 @@
 			</datatables:column>
 			
 			<datatables:column title="Preço">
-				<c:out value="${produto.preco}"></c:out>
+				<fmt:formatNumber value="${produto.preco}" type="currency"/>
 			</datatables:column>
 
 			<datatables:column title="Editar">
-				<a class="buttonAdd" href="<c:url value = "/produto/${produto.id}/editar.htm"></c:url>">Editar</a>
+				<a class="buttonAdd" href="<c:url value = "/produto/editar/${produto.id}"></c:url>">Editar</a>
 			</datatables:column>
 
 			<datatables:column title="Excluir">
-				<a class="buttonAdd" href="<c:url value = "/produto/${produto.id}/excluir.htm"></c:url>">Excluir</a>
+				<a class="buttonAdd" href="<c:url value = "/produto/excluir/${produto.id}"></c:url>">Excluir</a>
 			</datatables:column>
 		</datatables:table>
 		

@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
-		<div class="page-header">
+	<div class="page-header">
 		  <h1>Delivery <small>Sistema de pedidos</small></h1>
 		</div>
 		<nav class="navbar navbar-default" role="navigation">
@@ -30,7 +30,7 @@
 			      <a class="navbar-brand" href="<c:url value='/'/>">Home</a>
 			    </div>
 			</div>
-		</nav>
+		</nav><jsp:include page="../fragments/headerCliente.jsp" />
 
 		<form:form id="cliente" class="form-horizontal" role="form" action="/delivery/cliente/cadastrar" method="post" modelAttribute="cliente">
 		  

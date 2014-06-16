@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ import br.com.unopar.delivery.service.ClienteService;
 import br.com.unopar.delivery.service.EstabelecimentoService;
 import br.com.unopar.delivery.service.PedidoService;
 import br.com.unopar.delivery.service.ProdutoService;
+import br.com.unopar.delivery.util.Status;
 
 @Controller
 @RequestMapping("cliente")
@@ -54,6 +56,13 @@ public class ClienteController {
 		}
 		clienteService.cadastrar(cliente);
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/busca", method=RequestMethod.GET)
+	public String busca(ModelMap modelMap, HttpSession session) {
+		List<Estabelecimento> estabelecimentos = estabelecimentoService.getAll();
+		modelMap.addAttribute("estabelecimentos", estabelecimentos);
+		return "cliente/busca";
 	}
 	
 	@RequestMapping(value="/buscarEstabelecimento", method=RequestMethod.GET)
@@ -96,11 +105,13 @@ public class ClienteController {
 		return "cliente/realizarPedido";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/finalizarPedido", method=RequestMethod.GET)
 	public String finalizarPedido(@RequestParam("total") Double total, HttpSession session) {
 		Pedido pedido = (Pedido) session.getAttribute("pedido");
 		pedido.setValor(total);
 		pedido.setData(new Date());
+		pedido.setStatus(Status.SOLICITADO);
 		
 		pedido = pedidoService.cadastrar(pedido);
 		
@@ -120,6 +131,13 @@ public class ClienteController {
 		cliente = clienteService.getById(cliente.getId());
 		modelMap.addAttribute("cliente", cliente);
 		return "cliente/pedidos";
+	}
+	
+	@RequestMapping(value="/detalhePedido/{id}", method=RequestMethod.GET)
+	public String detalhePedido(@PathVariable("id") Integer id, ModelMap modelMap, HttpSession session) {
+		Pedido pedido = pedidoService.getById(id);
+		modelMap.addAttribute("pedido", pedido);
+		return "cliente/detalhePedido";
 	}
 
 }

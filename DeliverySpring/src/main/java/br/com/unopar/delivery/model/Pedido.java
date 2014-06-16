@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +40,7 @@ public class Pedido implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "pedido")
 	private List<PedidoProduto> pp;
 	
+	@Enumerated(EnumType.STRING)
 	private Status status;
 	
 	public Integer getId() {

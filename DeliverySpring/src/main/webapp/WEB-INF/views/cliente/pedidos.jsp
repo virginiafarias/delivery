@@ -53,14 +53,14 @@
 	<fmt:setLocale value="pt_BR"/>
 	<div id="conteudo" style="width: 1000px; margin: 0 auto;">
 		
-		<jsp:include page="../fragments/header.jsp" />
+		<jsp:include page="../fragments/headerCliente.jsp" />
 		
 		<div style="text-align: center;">
 			<label class="control-label" style="font-size: 20px;">Pedidos</label>
 		</div>
 
 		<datatables:table id="pedidos" data="${cliente.pedidos}" cdn="true" row="pedido" theme="bootstrap2" cssClass="table table-striped">
-			<datatables:column title="Número">
+			<datatables:column title="Código">
 				<c:out value="${pedido.id}"></c:out>
 			</datatables:column>
 
@@ -68,17 +68,22 @@
 				<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${pedido.data}" />
 			</datatables:column>
 			
-			<datatables:column title="Preço">
+			<datatables:column title="Valor">
 				<fmt:formatNumber value="${pedido.valor}" type="currency"/>
 			</datatables:column>
-
-			<datatables:column title="Editar">
-				<a class="buttonAdd" href="<c:url value = "/pedido/${pedido.id}/editar.htm"></c:url>">Editar</a>
+			
+			<datatables:column title="Estabelecimento">
+				<c:out value="${pedido.estabelecimento.nome}"></c:out>
+			</datatables:column>
+			
+			<datatables:column title="Status">
+				<c:out value="${pedido.status}"></c:out>
 			</datatables:column>
 
-			<datatables:column title="Excluir">
-				<a class="buttonAdd" href="<c:url value = "/pedido/${pedido.id}//excluir.htm"></c:url>">Excluir</a>
+			<datatables:column title="Detalhes">
+				<a class="buttonAdd" href="<c:url value = "/cliente/detalhePedido/${pedido.id}"></c:url>">Visualizar</a>
 			</datatables:column>
+
 		</datatables:table>
 		
 		<jsp:include page="../fragments/footer.jsp" />

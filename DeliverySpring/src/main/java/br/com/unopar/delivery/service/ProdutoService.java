@@ -11,5 +11,7 @@ public interface ProdutoService {
 	public abstract Produto cadastrar(Produto produto);
 
 	public abstract Produto getById(Integer id);
+	
+	public abstract void excluir(Integer id);
 
 }
