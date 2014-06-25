@@ -87,7 +87,7 @@
 		<jsp:include page="../fragments/headerCliente.jsp" />
 		
 		<div style="text-align: center;">
-			<label class="control-label" style="font-size: 20px;">Produtos</label>
+			<label class="control-label" style="font-size: 20px;">Produtos - ${estabelecimento.nome}</label>
 		</div>
 
 		<datatables:table id="produto" data="${estabelecimento.produtos}" cdn="true" row="produto" theme="bootstrap2" cssClass="table table-striped">

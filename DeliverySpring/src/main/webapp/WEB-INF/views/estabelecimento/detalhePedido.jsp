@@ -70,6 +70,9 @@
 		<div style="text-align: center;">
 			<label class="control-label" style="font-size: 20px;">Pedido ${pedido.id} - ${pedido.cliente.nome} - ${pedido.status}</label>
 		</div>
+		<div style="margin-top: 15px; margin-bottom: 20px;">
+			<label class="control-label" style="font-size: 20px;">Endereço - Rua ${pedido.cliente.endereco.rua}, ${pedido.cliente.endereco.numero}, ${pedido.cliente.endereco.bairro}, ${pedido.cliente.endereco.cidade} - ${pedido.cliente.endereco.estado}. Fone: ${pedido.cliente.telefone}</label>
+		</div>
 		
 		<datatables:table id="pedido" data="${pedido.pp}" cdn="true" row="pp" theme="bootstrap2" cssClass="table table-striped">
 			<datatables:column title="Produto">

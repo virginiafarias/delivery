@@ -62,6 +62,7 @@ public class EstabelecimentoController {
 	public String produtos(ModelMap modelMap, HttpSession session) {
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("usuario");
 		estabelecimento = estabelecimentoService.getById(estabelecimento.getId());
+		session.setAttribute("usuario", estabelecimento);
 		modelMap.addAttribute("estabelecimento", estabelecimento);
 		return "estabelecimento/produtos";
 	}
